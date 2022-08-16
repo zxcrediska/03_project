@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %} Вход в аккаунт {% endblock %}
+
+{% block content %}
+
+    <form method="post" class="registration-form" action="" novalidate style="margin-right: 200px; margin-left: 200px;">
+    <h2 class="mb-4 text-center" style="margin-top: 30px;">Вход в аккаунт</h2>
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(class="form-control") }}
+        {% if form.username.errors %}
+            {% for error in form.username.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% elif message %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(class="form-control", type="password") }}
+        {% if form.password.errors %}
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% elif message %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <div class="custom-control custom-checkbox">
+            {{ form.remember_me(class="custom-control-input") }}
+            {{ form.remember_me.label(class="custom-control-label") }}
+        </div>
+    </div>
+
+        <div style="margin-bottom: 40px;">{{ form.submit(type="submit", class="btn btn-warning btn-lg btn-block") }}</div>
+</form>
+
+<a href="/reg" style="text-decoration: underline; color: blue; font-size: 20px; margin-left: 200px; margin-top: 50px;" >Ещё не зарегистрированы?</a>
+
+{% endblock %}

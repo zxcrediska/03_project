@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Столицы {% endblock %}
+
+{% block content %}
+<body>
+    {% if win == max_win %}
+        <h3 align="center" style="margin-top: 50px;"><font color="green"> Поздравляем! Вы пришли марафон </font></h3>
+    {% else %}
+        <h3 align="center" style="margin-top: 50px;"><font color="red"> Вы дошли до {{ win }} вопроса из {{ max_win }} </font></h3>
+    {% endif %}
+    <div align="center">
+        <br>
+        <br>
+        <a href="/quizzes" style="text-decoration: underline; color: blue; font-size: 30px">
+                Вернуться на страницу с викторинами</a>
+    </div>
+</body>
+{% endblock %}
